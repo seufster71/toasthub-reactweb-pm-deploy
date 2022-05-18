@@ -6,8 +6,13 @@ export default function PMDeployModifyView({itemState, appPrefs,
 	onSave, onCancel, inputChange, onBlur}) {
 
 	let formName = "PM_DEPLOY_FORM";
-	let formTitle = "Deploys";
+	let formTitle = "Deploy";
 	let formGroup = "FORM1";
+	if (itemState.view == "SETTINGS") {
+		formName = "PM_DEPLOY_SETTINGS_FORM";
+		formTitle = "Deploy Settings";
+	}
+	
     
     return (
     	<FormBuilder itemState={itemState} formName={formName} formTitle={formTitle} formGroup={formGroup}

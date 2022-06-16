@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FormBuilder from '../../coreView/common/form-builder';
 
-export default function PMDeployModifyView({itemState, appPrefs, 
+export default function PMDeployPipelineModifyView({itemState, appPrefs, 
 	onSave, onCancel, inputChange, onBlur, onClick}) {
 
-	let formName = "PM_DEPLOY_FORM";
-	let formTitle = "Deploy";
+	let formName = "PM_DEPLOY_PIPELINE_FORM";
+	let formTitle = "Deploy Pipeline";
 	let formGroup = "FORM1";
 	if (itemState.view == "SETTINGS") {
-		formName = "PM_DEPLOY_SETTINGS_FORM";
-		formTitle = "Deploy Settings";
+		formName = "PM_DEPLOY_PIPELINE_SETTINGS_FORM";
+		formTitle = "Deploy Pipeline Settings";
 	}
 	
     
@@ -21,7 +21,7 @@ export default function PMDeployModifyView({itemState, appPrefs,
 }
 
 
-PMDeployModifyView.propTypes = {
+PMDeployPipelineModifyView.propTypes = {
   itemState: PropTypes.object.isRequired,
   appPrefs: PropTypes.object.isRequired,
   onSave: PropTypes.func,

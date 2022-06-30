@@ -7,7 +7,7 @@ import Modal from '../../coreView/common/modal';
 
 export default function PMDeployPipelineView({itemState, appPrefs, onListLimitChange,
 	onSearchChange, onSearchClick, onPaginationClick, onOrderBy, onOption, 
-	closeModal, session}) {
+	closeModal, goBack, session}) {
 
     let columns = [];
     if (itemState.prefLabels != null && itemState.prefLabels.PM_DEPLOY_PIPELINE_PAGE != null) {
@@ -16,8 +16,16 @@ export default function PMDeployPipelineView({itemState, appPrefs, onListLimitCh
     let group = "TABLE1";
     
     let header = "";
+    let parent = null;
+	if (itemState.parent != null) {
+		parent = itemState.parent.name;
+	} 
 	if (itemState.prefTexts.PM_DEPLOY_PIPELINE_PAGE != null && itemState.prefTexts.PM_DEPLOY_PIPELINE_PAGE.PM_DEPLOY_PIPELINE_PAGE_HEADER != null) {
 		header = itemState.prefTexts.PM_DEPLOY_PIPELINE_PAGE.PM_DEPLOY_PIPELINE_PAGE_HEADER.value;
+	}
+	
+	if (goBack != null && parent != null && parent != "") {
+		header = <span>{header} : <a onClick={() => goBack()} aria-hidden="true">{parent}</a></span>;
 	}
 	
 	let deleteModalHeader = "Delete ";
@@ -90,5 +98,6 @@ PMDeployPipelineView.propTypes = {
 	onOrderBy: PropTypes.func, 
 	closeModal: PropTypes.func,
 	onOption: PropTypes.func,
+	goBack: PropTypes.func,
 	session: PropTypes.object
 };
